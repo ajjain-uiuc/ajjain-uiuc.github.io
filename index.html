@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="">
+		<title>World Happiness Report</title>
+		<link href="css/style.css" rel="stylesheet">
+		<link href="css/carousel.css" rel="stylesheet">
+		<link href="css/responsive.css" rel="stylesheet">
+		<style>
+
+		</style>
+	</head>
+	<body>
+		<div class="slideshow-container">
+			<div class="slides fade">
+				<div class="row">
+					<div class="row justify-content-center align-items-center ">
+						<div class="col-1"></div>
+						<div class="col-10 justify-content-center align-items-center">
+						  <div class="text-center">
+							<h2 class="text-primary">Overview: State of Global Happiness</h2>
+							<p class="text-secondary">The World Happiness Report is a landmark survey of the state of global happiness that ranks 156 countries by how happy their citizens perceive themselves to be. The World Happiness Report 2020 for the first time ranks cities around the world by their subjective well-being and digs more deeply into how the social.</p>
+						  </div>
+						</div>
+						<div class="col-1"></div>
+					</div>
+					<div class="row justify-content-center align-items-center">
+						<div class="col-1"></div>
+						<div class="col-7 justify-content-center align-items-center">
+							<div class="row">
+								<div class="col">
+									<div id="happiness_score_map" class=" overflow-auto"></div>
+									<p class="row  justify-content-center align-items-bottom text-primary">Happiness around the World</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-3 justify-content-center align-items-center">
+							<div class="row">
+								<div class="col">
+									<div id="happiness_rank_chart_top" class="row text-muted justify-content-center align-items-center overflow-auto"></div>
+									<p class="row  justify-content-center align-items-center text-primary">Countries with higher Happiness Score</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col">
+									<div id="happiness_rank_chart_bottom" class="row text-muted justify-content-center align-items-center overflow-auto"></div>
+									<p class="row  justify-content-center align-items-center text-primary">Countries with lower Happiness Score</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-1"></div>
+					</div>
+					<div class="row justify-content-center">
+						<select id="overviewRegionDropDown" onchange="onOverviewRegionSelect()">
+							<option value="World">World</option>
+							<option value="Australia and New Zealand">Australia and New Zealand</option>
+							<option value="Central and Eastern Europe">Central and Eastern Europe</option>
+							<option value="Eastern Asia">Eastern Asia</option>
+							<option value="Latin America and Caribbean">Latin America and Caribbean</option>
+							<option value="Middle East and Northern Africa">Middle East and Northern Africa</option>
+							<option value="North America">North America</option>
+							<option value="Southern Asia">Southern Asia</option>
+							<option value="Southeastern Asia">Southeastern Asia</option>
+							<option value="Sub-Saharan Africa">Sub-Saharan Africa</option>
+							<option value="Western Europe">Western Europe</option>
+						</select>
+					</div>
+				</div>
+			</div>
+
+			<div class="slides fade">
+				<div class="row">
+					<div class="row justify-content-center align-items-center ">
+						<div class="col-1"></div>
+						<div class="col-10 justify-content-center align-items-center">
+						  <div class="text-center">
+							<h2 class="text-primary">Factors Affecting Happiness</h2>
+							<p class="text-secondary">Factors included are real GDP per capita, social support, healthy life expectancy, freedom to make life choices, generosity, and perceptions of corruption. Each country is also compared against a hypothetical nation called Dystopia. Dystopia represents the lowest national averages for each key variable and is, along with residual error, used as a regression benchmark.</p>
+						  </div>
+						</div>
+						<div class="col-1"></div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="row justify-content-center align-items-center ">
+						<div class="col-025"></div>
+						<div class="col-1105 justify-content-center align-items-center">
+							<div id="happiness_factors_stacked" class=" overflow-auto"></div>
+						</div>
+						<div class="col-025"></div>
+					</div>
+				</div>				
+				<div class="row">
+					<div class="row justify-content-center align-items-center ">
+						<div class="col-1"></div>
+						<div class="col-05"></div>
+						<div class="col-3 justify-content-center align-items-center">
+							<div id="happiness_gdp_scatter"	 class=" overflow-auto"></div>
+						</div>
+						<div class="col-3 justify-content-center align-items-center">
+							<div id="happiness_social_scatter"		 class=" overflow-auto"></div>
+						</div>
+						<div class="col-3 justify-content-center align-items-center">
+							<div id="happiness_health_scatter" 		 class=" overflow-auto"></div>
+						</div>
+						<div class="col-05"></div>
+						<div class="col-1"></div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="row justify-content-center align-items-center ">
+						<div class="col-05"></div>
+						<div class="col-1"></div>
+						<div class="col-3 justify-content-center align-items-center">
+							<div id="happiness_freedom_scatter" 	 class=" overflow-auto"></div>
+						</div>
+						<div class="col-3 justify-content-center align-items-center">
+							<div id="happiness_generosity_scatter" 	 class=" overflow-auto"></div>
+						</div>
+						<div class="col-3 justify-content-center align-items-center">
+							<div id="happiness_corruption_scatter"	 class=" overflow-auto"></div>
+						</div>
+						<div class="col-1"></div>
+						<div class="col-05"></div>
+					</div>
+				</div>
+				<div class="row justify-content-center">
+					<select id="factorRegionDropDown" onchange="onFactorRegionSelect()">
+						<option value="World">World</option>
+						<option value="Australia and New Zealand">Australia and New Zealand</option>
+						<option value="Central and Eastern Europe">Central and Eastern Europe</option>
+						<option value="Eastern Asia">Eastern Asia</option>
+						<option value="Latin America and Caribbean">Latin America and Caribbean</option>
+						<option value="Middle East and Northern Africa">Middle East and Northern Africa</option>
+						<option value="North America">North America</option>
+						<option value="Southern Asia">Southern Asia</option>
+						<option value="Southeastern Asia">Southeastern Asia</option>
+						<option value="Sub-Saharan Africa">Sub-Saharan Africa</option>
+						<option value="Western Europe">Western Europe</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="slides fade">
+				<div class="row">
+					<div class="row justify-content-center align-items-center ">
+						<div class="col-1"></div>
+						<div class="col-10 justify-content-center align-items-center">
+						  <div class="text-center">
+							<h2 class="text-primary">Changes in World Happiness</h2>
+							<p class="text-secondary">Factors included are real GDP per capita, social support, healthy life expectancy, freedom to make life choices, generosity, and perceptions of corruption. Each country is also compared against a hypothetical nation called Dystopia. Dystopia represents the lowest national averages for each key variable and is, along with residual error, used as a regression benchmark.</p>
+						  </div>
+						</div>
+						<div class="col-1"></div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="row justify-content-center align-items-center ">
+						<div class="col-05"></div>
+						<div class="col-11 justify-content-center align-items-center">
+							<div id="happiness_change_bar" class=" overflow-auto"></div>
+						</div>
+						<div class="col-05"></div>
+					</div>
+				</div>					
+				<div class="row">
+					<div class="row justify-content-center align-items-center ">
+						<<div class="col-1"></div>
+						<div class="col-10 justify-content-center align-items-center">
+							<div id="happiness_change_scatter" class=" overflow-auto"></div>
+						</div>
+						<div class="col-1"></div>
+					</div>
+				</div>		
+				<div class="row justify-content-center">
+					<select id="changeRegionDropDown" onchange="onChangeRegionSelect()">
+						<option value="World">World</option>
+						<option value="Australia and New Zealand">Australia and New Zealand</option>
+						<option value="Central and Eastern Europe">Central and Eastern Europe</option>
+						<option value="Eastern Asia">Eastern Asia</option>
+						<option value="Latin America and Caribbean">Latin America and Caribbean</option>
+						<option value="Middle East and Northern Africa">Middle East and Northern Africa</option>
+						<option value="North America">North America</option>
+						<option value="Southern Asia">Southern Asia</option>
+						<option value="Southeastern Asia">Southeastern Asia</option>
+						<option value="Sub-Saharan Africa">Sub-Saharan Africa</option>
+						<option value="Western Europe">Western Europe</option>
+					</select>
+				</div>				
+			</div>
+
+			<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+			<a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+		</div>
+		<br>
+		<script>
+			var slideIndex = 1;
+			showSlides(slideIndex);
+
+			function plusSlides(n) {
+			  showSlides(slideIndex += n);
+			}
+
+			function currentSlide(n) {
+			  showSlides(slideIndex = n);
+			}
+
+			function showSlides(n) {
+			  var i;
+			  var slides = document.getElementsByClassName("slides");
+			  // var dots = document.getElementsByClassName("dot");
+			  if (n > slides.length) {slideIndex = 1}    
+			  if (n < 1) {slideIndex = slides.length}
+			  for (i = 0; i < slides.length; i++) {
+				  slides[i].style.display = "none";  
+			  }
+			  // for (i = 0; i < dots.length; i++) {
+			  //  dots[i].className = dots[i].className.replace(" active", "");
+			  // }
+			  slides[slideIndex-1].style.display = "block";  
+			  // dots[slideIndex-1].className += " active";
+			}
+		</script>
+		<script src="https://d3js.org/d3.v5.min.js"></script>
+		<script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+		<script src="js/tooltip.js"></script>
+		<script src="js/action.js"></script>
+		<script src="js/geomap.js"></script>
+		<script src="js/scatterplot.js"></script>
+		<script src="js/scatterplotwithtrend.js"></script>
+		<script src="js/barchart.js"></script>
+		<script src="js/plusminusbarchart.js"></script>
+		<script src="js/stackedbarchart.js"></script>
+		<script src="js/dataloader.js"></script>
+		<script src="js/controller.js"></script>
+		<script>run();</script>
+
+	</body>
+</html> 
