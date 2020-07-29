@@ -196,6 +196,19 @@
 
 		</div>
 		<br>
+		<script src="https://d3js.org/d3.v5.min.js"></script>
+		<script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+		<script src="js/tooltip.js"></script>
+		<script src="js/action.js"></script>
+		<script src="js/geomap.js"></script>
+		<script src="js/scatterplot.js"></script>
+		<script src="js/scatterplotwithtrend.js"></script>
+		<script src="js/barchart.js"></script>
+		<script src="js/plusminusbarchart.js"></script>
+		<script src="js/stackedbarchart.js"></script>
+		<script src="js/dataloader.js"></script>
+		<script src="js/controller.js"></script>
+		<script>run();</script>
 		<script>
 			var slideIndex = 1;
 			showSlides(slideIndex);
@@ -211,32 +224,20 @@
 			function showSlides(n) {
 			  var i;
 			  var slides = document.getElementsByClassName("slides");
-			  // var dots = document.getElementsByClassName("dot");
 			  if (n > slides.length) {slideIndex = 1}    
 			  if (n < 1) {slideIndex = slides.length}
 			  for (i = 0; i < slides.length; i++) {
 				  slides[i].style.display = "none";  
 			  }
-			  // for (i = 0; i < dots.length; i++) {
-			  //  dots[i].className = dots[i].className.replace(" active", "");
-			  // }
-			  slides[slideIndex-1].style.display = "block";  
-			  // dots[slideIndex-1].className += " active";
+			  slides[slideIndex-1].style.display = "block"; 
+			  switch (slideIndex) {
+				case 1: drawOverview(global_topo, global_df_happiness, 'World'); break;
+				case 2: drawFactors(global_topo, global_df_happiness, 'World'); break;
+				case 3: drawChange(global_topo, global_df_happiness, 'World');  break;
+				default: draw(global_topo, global_df_happiness, 'World');
+			  }
 			}
 		</script>
-		<script src="https://d3js.org/d3.v5.min.js"></script>
-		<script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
-		<script src="js/tooltip.js"></script>
-		<script src="js/action.js"></script>
-		<script src="js/geomap.js"></script>
-		<script src="js/scatterplot.js"></script>
-		<script src="js/scatterplotwithtrend.js"></script>
-		<script src="js/barchart.js"></script>
-		<script src="js/plusminusbarchart.js"></script>
-		<script src="js/stackedbarchart.js"></script>
-		<script src="js/dataloader.js"></script>
-		<script src="js/controller.js"></script>
-		<script>run();</script>
 
 	</body>
 </html> 

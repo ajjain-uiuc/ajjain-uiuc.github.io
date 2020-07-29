@@ -44,7 +44,7 @@ function drawScatterPlotWithTrend(df, id, region, x, y, r, c){
   svg.append("g").selectAll().data(df).enter().append("circle")
 	  .attr("cx", function(d,i){
 		  return xScale(d[x] || 0);})
-	  .attr("cy", function(d,i){return yScale(d[y] || 0);})
+	  .attr("cy", function(d,i){return yScale(0);})
 	  .attr("r", function(d,i){return rScale(Math.abs(d[r]));})
 	  .attr("fill", function(d){ return d[c] > 0 ? "#2E8B57" : "#B22222"; });
 
@@ -61,4 +61,10 @@ function drawScatterPlotWithTrend(df, id, region, x, y, r, c){
                            (height - margin - 20) + ")")
       .style("text-anchor", "middle")
       .text(x);
+
+  svg.selectAll("circle")
+    .transition()
+    .duration(800)
+    .attr("cy", function(d,i){return yScale(d[y] || 0);})
+    .delay(function(d,i){return(100)});
 }

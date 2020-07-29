@@ -22,3 +22,25 @@ div.tooltip {
   border: 0px;        
   pointer-events: none;     
 }
+
+.topannotation {
+  fill: transparent;
+  stroke: green;
+  stroke-width: 3px;
+  stroke-opacity: 0.6;
+}
+
+.bottomannotation {
+  fill: transparent;
+  stroke: red;
+  stroke-width: 3px;
+  stroke-opacity: 0.6;
+}
+
+.textannotation text {
+  text-shadow: -2px 0 2px #fff, 
+                0 2px 2px #fff,
+                2px 0 2px #fff, 
+                0 -2px 2px #fff;
+  font: italic 6px sans-serif;
+}

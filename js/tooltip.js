@@ -3,8 +3,8 @@ var tooltip = d3.select("body").append("div")
 	.style("opacity", 0);
 
 function getHtml(d, params){
-	var html = d.country;
-	for(var i=0; i<params.length; i++){
+	var html = d ? d.country : "";
+	for(var i=0; i<params.length && d; i++){
 		html = html + "<br/><b>"+params[0]+":</b> "+d[params[0]];
 	}
 	return html;

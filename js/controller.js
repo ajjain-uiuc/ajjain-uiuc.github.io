@@ -3,6 +3,7 @@ function draw(topo, df, region){
   drawBarChart(df, "#happiness_rank_chart_top", "country", "score", "score", true, 5, xlabel=false, region);
   drawBarChart(df, "#happiness_rank_chart_bottom", "country", "score", "score", false, 5, xlabel=false, region);
 
+  /*
   drawStackedBarChart(df, "#happiness_factors_stacked", region, 156, true);
   drawScatterPlot(df, "#happiness_gdp_scatter", 		region, "gdp", "score", "total_population", "gdp");
   drawScatterPlot(df, "#happiness_social_scatter", 		region, "social", "score", "total_population", "social");
@@ -14,7 +15,7 @@ function draw(topo, df, region){
 
   drawPlusMinusBarChart(df, "#happiness_change_bar", "country", "percent_change", region);
   drawScatterPlotWithTrend(df, "#happiness_change_scatter", 	region, "score", "score_old", "percent_change", "percent_change");
-  
+  */
 }
 
 function drawChange(topo, df, region){
