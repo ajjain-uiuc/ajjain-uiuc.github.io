@@ -1,7 +1,7 @@
 function drawStackedBarChart(df, id, region, top, desc){
 	var width = 1800;
-	var height = 400;
-	var margin = 150;
+	var height = 200;
+	var margin = 100;
 	
 	df = df.filter(function(d, i){ 
 		return d.region == region || region == 'World'; 
@@ -18,7 +18,7 @@ function drawStackedBarChart(df, id, region, top, desc){
 	var div = d3.select(id);
 	var svgOld = div.select("svg").remove(); 
 	var svg = div.append("svg")
-		.attr("viewBox", `0 0 2000 500`);
+		.attr("viewBox", `0 0 2000 300`);
 	  
 	var g = svg.append("g").attr("transform", "translate(" + margin + "," + 0 + ")");
 
@@ -68,7 +68,7 @@ function drawStackedBarChart(df, id, region, top, desc){
       .call(d3.axisBottom(xScale))
 	  .selectAll('text')
 		.attr("dx", "-.8em")
-        .attr("dy", ".30em")
+        .attr("dy", ".0em")
 		.style("text-anchor", "end")
 		.attr("class", "axis")
 		.attr("transform", "rotate(-90)");
