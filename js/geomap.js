@@ -1,7 +1,7 @@
 function drawMap(id, region, topo, df) {
   var center;
   switch (region){
-	  case 'World': zoom = 100; center = [0,50]; break;
+	  case 'World': zoom = 125; center = [0,50]; break;
 	  case 'Western Europe': zoom = 300; center = [10,50]; break;
 	  case 'North America': zoom = 200; center = [-110,57]; break;
 	  case 'Australia and New Zealand': zoom = 350; center = [147,-35]; break;
@@ -52,7 +52,6 @@ function drawMap(id, region, topo, df) {
       // set the color of each country
       .attr("fill", function (d) {
 		record = mapdata.get(d.id);
-		console.log(d.id, d.properties.name)
         return ( (record && (region == record.region || region == 'World')) ? colorScale(record.score) : "lightgray");
       })
       .style("stroke", "transparent")
@@ -90,16 +89,17 @@ function drawMap(id, region, topo, df) {
 		.enter()
 		.append('text')
 			.attr('transform', function (d) { return 'translate(' + path.centroid(d) + ')';})
-			.attr("dx", function(d){return -20})
+			.attr("dx", function(d){return -40})
 			.attr("dy","-.48em")
 			.attr("class", "textannotation")
 			.text(function(d){
 				if (mapdata.get(d.id)) { 
 					switch(mapdata.get(d.id)['score']){
-						case max_score_reg: return mapdata.get(d.id)['country']; 
-						case min_score_reg: return mapdata.get(d.id)['country']; 
+						case max_score_reg: return mapdata.get(d.id)['country'] + " is Ranked First"; 
+						case min_score_reg: return mapdata.get(d.id)['country'] + " is Ranked Last"; 
 						default: return '';
 					}
 				} else return '';
-			});
+			})
+			.attr("font-size", "12px");
 }

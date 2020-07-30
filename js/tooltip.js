@@ -5,7 +5,7 @@ var tooltip = d3.select("body").append("div")
 function getHtml(d, params){
 	var html = d ? d.country : "";
 	for(var i=0; i<params.length && d; i++){
-		html = html + "<br/><b>"+params[0]+":</b> "+d[params[0]];
+		html = html + "<br/><b>"+params[i]+":</b> "+d[params[i]];
 	}
 	return html;
 }
@@ -30,14 +30,15 @@ function mouseoutmap(d) {
 		.style("opacity", 0); 
 }
 
-function mouseover(d) {    
+
+function mouseover(d, params) {    
 	tooltip.transition()    
 		.duration(200)    
 		.style("opacity", .9);    
 	tooltip.html(
 			getHtml(
 				d, 
-				['score']
+				params
 			)
 		)
 		.style("left", (d3.event.pageX) + "px")   
@@ -50,3 +51,12 @@ function mouseout(d) {
 		.duration(500)    
 		.style("opacity", 0); 
 }
+
+
+function mouseover_overview(d){mouseover(d, ['score']);}
+function mouseover_gdp(d){mouseover(d, ['score', 'gdp']);}
+function mouseover_corruption(d){mouseover(d, ['score', 'corruption']);}
+function mouseover_health(d){mouseover(d, ['score', 'health']);}
+function mouseover_social(d){mouseover(d, ['score', 'social']);}
+function mouseover_generosity(d){mouseover(d, ['score', 'generosity']);}
+function mouseover_freedom(d){mouseover(d, ['score', 'freedom']);}

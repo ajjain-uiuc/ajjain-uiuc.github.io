@@ -1,9 +1,13 @@
+.text-head {
+    color: #007bff !important;
+}
 .text-primary {
     color: #007bff !important;
+	font: 14px sans-serif;
 }
 .text-secondary {
     color: #323232 !important;
-	font: 14px sans-serif;
+	font: 12px sans-serif;
 }
 .justify-content-center {
 	text-align: center;
@@ -47,4 +51,10 @@ div.tooltip {
                 2px 0 2px #fff, 
                 0 -2px 2px #fff;
   font: italic 6px sans-serif;
+}
+
+.voronoi path {
+  fill: #fff;
+  stroke: #fff;
+  stroke-width: 1px;
 }

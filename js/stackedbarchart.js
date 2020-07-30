@@ -3,6 +3,8 @@ function drawStackedBarChart(df, id, region, top, desc){
 	var height = 200;
 	var margin = 100;
 	
+
+	
 	df = df.filter(function(d, i){ 
 		return d.region == region || region == 'World'; 
 	});

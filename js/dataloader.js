@@ -32,7 +32,7 @@ async function load(callback) {
       freedom_change   : +d.freedom_change   ,
       generosity_change: +d.generosity_change,
       corruption_change: +d.corruption_change,
-	  total            : (+d.gdp) + (+d.social) + (+d.health) + (+d.freedom) + (+d.generosity) + (+d.corruption) + (+d.dystopia),
+	  total            : (+d.gdp) + (+d.social) + (+d.health) + (+d.freedom) + (+d.generosity) - (+d.corruption) + (+d.dystopia),
 	  percent_change   : (+d.score_change)*100/(+d.score_old)
 	};
   });

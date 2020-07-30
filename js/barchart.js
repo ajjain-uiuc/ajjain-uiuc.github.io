@@ -1,5 +1,6 @@
 function drawBarChart(df, id, x, y, c, desc, top,xlabel=true, region){
-    
+  if(region == 'World') top = 50;  
+  
   df.sort(function(b, a) {
     return desc ? a[y] - b[y] : b[y] - a[y];
   });
@@ -8,12 +9,12 @@ function drawBarChart(df, id, x, y, c, desc, top,xlabel=true, region){
  
   var svgOld = div.select("svg").remove(); 
   
-  var width = 350;
-  var height = 200;
+  var width = 800;
+  var height = 250;
   var margin = 50;
 
   var svg = div.append("svg")
-	  .attr("viewBox", `0 0 350 200`)
+	  .attr("viewBox", `0 0 800 300`)
     .append("g")
       .attr("transform", "translate("+margin+ "," + margin + ")");
 
@@ -71,7 +72,7 @@ function drawBarChart(df, id, x, y, c, desc, top,xlabel=true, region){
       .attr("fill", function(d){
 		return colorScale(d[c]);
 	  })
-	  .on("mousemove", mouseover)
+	  .on("mousemove", mouseover_overview)
 	  .on("mouseout", mouseout);
 
   svg.append("text")

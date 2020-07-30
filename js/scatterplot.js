@@ -44,6 +44,14 @@ function drawScatterPlot(df, id, region, x, y, r, c){
     .domain([c_min, c_max])
     .interpolator(d3.interpolateViridis);;
 
+  var voronoi = d3.voronoi()
+	.x(function(d) { return xScale(d[x]); })
+	.y(function(d) { return yScale(d[y]); })
+	.extent([[0, 0], [width - 2*margin, height - 2*margin]]);
+
+  var voronoiGroup = svg.append("g")
+	.attr("class", "voronoi");
+
   svg.append("g")
     .attr("transform", "translate("+0+"," + (height - 2*margin) + ")")
     .call(d3.axisBottom(xScale));
@@ -51,12 +59,23 @@ function drawScatterPlot(df, id, region, x, y, r, c){
   svg.append("g")
     .call(d3.axisLeft(yScale));
   
+  var mouse_over_cb = null;
+  if(x == 'freedom')  mouse_over_cb=mouseover_freedom;
+  if(x == 'corruption') mouse_over_cb=mouseover_corruption;
+  if(x == 'gdp') mouse_over_cb=mouseover_gdp;
+  if(x == 'generosity') mouse_over_cb=mouseover_generosity;
+  if(x == 'social') mouse_over_cb=mouseover_social;
+  if(x == 'health') mouse_over_cb=mouseover_health;
+  
+  
   svg.append("g").selectAll().data(df).enter().append("circle")
 	  .attr("cx", function(d,i){
 		  return xScale(d[x] || 0);})
 	  .attr("cy", function(d,i){return yScale(d[y] || 0);})
 	  .attr("r", function(d,i){return rScale(d[r] || 1);})
-	  .attr("fill", function (d) {return z(c);});
+	  .attr("fill", function (d) {return z(c);})
+	  .on("mouseover", mouse_over_cb )
+	  .on("mouseout", mouseout );
 
   svg.append("text")
     .attr("transform", "rotate(-90)")
@@ -71,4 +90,16 @@ function drawScatterPlot(df, id, region, x, y, r, c){
                            (height - margin - 20) + ")")
       .style("text-anchor", "middle")
       .text(x);
+
+	voronoiGroup.selectAll("path")
+		.data(voronoi(df).polygons())
+		.enter().append("path")
+			.attr("d", function(d) { 
+				return d ? "M" + d.join("L") + "Z" : null; 
+			})
+			.datum(function(d, i) { 
+				return d.data;
+			})
+			.on("mouseover", mouse_over_cb )
+			.on("mouseout", mouseout )
 }
