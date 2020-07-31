@@ -18,11 +18,11 @@ function drawPlusMinusBarChart(df, id, x, y, region){
   var svgOld = div.select("svg").remove(); 
   
   var width = 1800;
-  var height = 400;
-  var margin = 150;
+  var height = 300;
+  var margin = 50;
 
   var svg = div.append("svg")
-	  .attr("viewBox", `0 0 1800 700`);
+	  .attr("viewBox", `0 0 1800 500`);
 
 
 

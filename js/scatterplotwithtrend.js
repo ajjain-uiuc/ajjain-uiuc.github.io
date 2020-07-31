@@ -2,11 +2,11 @@ function drawScatterPlotWithTrend(df, id, region, x, y, r, c){
   var div = d3.select(id);
  
   var width = 1200;
-  var height = 400;
+  var height = 500;
   var margin = 50;
   var svgOld = div.select("svg").remove(); 
   var svg = div.append("svg")
-	  .attr("viewBox", `0 0 1200 400`)
+	  .attr("viewBox", `0 0 1200 500`)
     .append("g")
       .attr("transform", "translate("+margin+ "," + margin + ")");
 	  
@@ -32,7 +32,7 @@ function drawScatterPlotWithTrend(df, id, region, x, y, r, c){
   
   var rScale = d3.scaleSqrt()
     .domain([r_min, r_max])
-	.range([1, 10]);
+	.range([1, 15]);
 
   svg.append("g")
     .attr("transform", "translate("+0+"," + (height - 2*margin) + ")")
@@ -47,6 +47,11 @@ function drawScatterPlotWithTrend(df, id, region, x, y, r, c){
 	  .attr("cy", function(d,i){return yScale(0);})
 	  .attr("r", function(d,i){return rScale(Math.abs(d[r]));})
 	  .attr("fill", function(d){ return d[c] > 0 ? "#2E8B57" : "#B22222"; });
+
+  svg.append("g").selectAll().data(df).enter().append("text")
+	  .attr("x", function(d,i){return xScale(d[x] || 0);})
+	  .attr("y", function(d,i){return yScale(d[y] || 0);})
+	  .text(function(d){return Math.abs(d[r]) > 20 ? d.country+' '+(Math.floor(d[r] * 1000) / 1000)+'%' : '';});
 
   svg.append("text")
     .attr("transform", "rotate(-90)")
@@ -67,4 +72,13 @@ function drawScatterPlotWithTrend(df, id, region, x, y, r, c){
     .duration(800)
     .attr("cy", function(d,i){return yScale(d[y] || 0);})
     .delay(function(d,i){return(100)});
+
+  
+  svg.append('line')
+    .style("stroke", "black")
+    .style("stroke-width", 2)
+    .attr("x1", xScale(Math.max(x_min, y_min)))
+    .attr("y1", yScale(Math.max(x_min, y_min)))
+    .attr("x2", xScale(Math.max(x_max, y_max)))
+    .attr("y2", yScale(Math.max(x_max, y_max))); 
 }

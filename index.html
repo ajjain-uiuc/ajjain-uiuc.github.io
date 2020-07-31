@@ -8,11 +8,15 @@
 		<link href="css/style.css" rel="stylesheet">
 		<link href="css/carousel.css" rel="stylesheet">
 		<link href="css/responsive.css" rel="stylesheet">
+		<link href="css/nav.css" rel="stylesheet">
 		<style>
 
 		</style>
 	</head>
-	<body>
+	<body class="bg-gradient">
+		<ul>
+		  <li><a href="#">World Happiness Report</a></li>
+		</ul>
 		<div class="slideshow-container">
 			<div class="slides fade">
 				<div class="row">
@@ -112,12 +116,12 @@
 						<div class="col-1"></div>
 					</div>
 				</div>
-				<div class="row">
+				<div class="row">						
 					<div class="row justify-content-center align-items-center ">
 						<div class="col-1"></div>
-						<div class="col-05"></div>					
+						<div class="col-05"></div>	
 						<div class="col-3 justify-content-center align-items-center">
-							<p class="row  justify-content-center align-items-bottom text-primary">Freedom to make Life Choices</p>
+							<p class="row  justify-content-center align-items-bottom text-primary">Freedom to Life Choices</p>
 							<div id="happiness_freedom_scatter" 	 class=" overflow-auto"></div>
 						</div>
 						<div class="col-3 justify-content-center align-items-center">
@@ -128,8 +132,8 @@
 							<p class="row  justify-content-center align-items-bottom text-primary">Perception of Corruption</p>
 							<div id="happiness_corruption_scatter"	 class=" overflow-auto"></div>
 						</div>
+						<div class="col-05"></div>
 						<div class="col-1"></div>
-						<div class="col-05"></div>						
 					</div>
 				</div>				
 				<div class="row justify-content-center">
@@ -164,22 +168,20 @@
 				</div>
 				<div class="row">
 					<div class="row justify-content-center align-items-center ">
-						<div class="col-05"></div>
-						<div class="col-11 justify-content-center align-items-center">
-							<div id="happiness_change_bar" class=" overflow-auto"></div>
-						</div>
-						<div class="col-05"></div>
-					</div>
-				</div>					
-				<div class="row">
-					<div class="row justify-content-center align-items-center ">
-						<<div class="col-1"></div>
-						<div class="col-10 justify-content-center align-items-center">
+						<div class="col-2"></div>
+						<div class="col-8 justify-content-center align-items-center">
 							<div id="happiness_change_scatter" class=" overflow-auto"></div>
 						</div>
-						<div class="col-1"></div>
+						<div class="col-2"></div>
 					</div>
-				</div>		
+					<div class="row justify-content-center align-items-center ">
+						<div class="col-2"></div>
+						<div class="col-8 justify-content-center align-items-center">
+							<div id="happiness_change_bar" class=" overflow-auto"></div>
+						</div>
+						<div class="col-2"></div>
+					</div>
+				</div>					
 				<div class="row justify-content-center">
 					<select id="changeRegionDropDown" onchange="onChangeRegionSelect()">
 						<option value="World">World</option>

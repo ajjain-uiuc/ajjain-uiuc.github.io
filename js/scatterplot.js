@@ -102,4 +102,67 @@ function drawScatterPlot(df, id, region, x, y, r, c){
 			})
 			.on("mouseover", mouse_over_cb )
 			.on("mouseout", mouseout )
+	
+	corr = correlation(df, x, y);
+	corrData = [{'corr': corr}];
+	
+	svg.selectAll("summary")
+         .data(corrData)
+         .enter()
+         .append("text")
+			.attr("dx", 15)
+			.attr("dy", 15)
+			.attr("class", "textannotation")
+			.attr("font-size", "12px")
+			.text( function (d) { 
+				return "Correlation Coefficient between "; 
+			});
+			
+	svg.selectAll("variables")
+         .data(corrData)
+         .enter()
+         .append("text")
+			.attr("dx", 15)
+			.attr("dy", 30)
+			.attr("class", "textannotation")
+			.attr("font-size", "12px")
+			.text( function (d) { 
+				return x+" and "+y + " is calculated to"; 
+			});
+	svg.selectAll("correlation")
+         .data(corrData)
+         .enter()
+         .append("text")
+			.attr("dx", 15)
+			.attr("dy", 45)
+			.attr("class", "textannotation")
+			.attr("font-size", "12px")
+			.text( function (d) { 
+				return (Math.floor(d.corr * 1000) / 1000) + ' which represents a'; 
+			});
+	svg.selectAll("represents")
+         .data(corrData)
+         .enter()
+         .append("text")
+			.attr("dx", 15)
+			.attr("dy", 60)
+			.attr("class", "textannotation")
+			.attr("font-size", "12px")
+			.text( function (d) { 
+				return  (Math.abs(d.corr) > 0.7 ? 'Strong' : (Math.abs(d.corr) > 0.4 ? 'Medium' : 'Weak')) + ' relationship' ; 
+			});
+
 }
+
+function correlation(df, x, y){
+  let sumX = 0, sumY = 0, sumXY = 0, sumX2 = 0,  sumY2 = 0;
+  var length = df.length;
+  for(var i=0; i<length; i++){
+	  sumX += df[i][x];
+      sumY += df[i][y];
+      sumXY += df[i][x] * df[i][y];
+      sumX2 += df[i][x] * df[i][x];
+      sumY2 += df[i][y] * df[i][y];
+  }
+  return (length * sumXY - sumX * sumY) / Math.sqrt((length * sumX2 - sumX * sumX) * (length * sumY2 - sumY * sumY));
+};
