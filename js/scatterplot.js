@@ -127,7 +127,7 @@ function drawScatterPlot(df, id, region, x, y, r, c){
 			.attr("class", "textannotation")
 			.attr("font-size", "12px")
 			.text( function (d) { 
-				return x+" and "+y + " is calculated to"; 
+				return x+" and "+y + " is "; 
 			});
 	svg.selectAll("correlation")
          .data(corrData)

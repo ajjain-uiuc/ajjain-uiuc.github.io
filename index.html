@@ -14,18 +14,46 @@
 		</style>
 	</head>
 	<body class="bg-gradient">
-		<ul>
-		  <li><a href="#">World Happiness Report</a></li>
+		<ul class="nav">
+		  <li class="nav"><a class="nav" href="#">World Happiness Report</a></li>
 		</ul>
 		<div class="slideshow-container">
 			<div class="slides fade">
-				<div class="row">
+				<div class="row align-items-center">
+					<div class="row justify-content-center align-items-center">
+						<div class="col-1"></div>
+						<div class="col-10 justify-content-center align-items-center">
+							<div class="text-center">
+								<h2 class="text-head">Introduction</h2>
+								<div class="row">
+									<p class="text-secondary">The <b><a href="https://worldhappiness.report/">World Happiness Report</a></b> is a study of the <b><a href="https://www.unsdsn.org/">United Nations Sustainable Development Solutions Network</a></b>. It contains rankings of national happiness based on respondent ratings of their own lives which the report also correlates with various life factors. Key factors which are found to support well-being are measured to report the happiness score.</p>
+								</div>
+								<div class="row">
+									<p class="text-secondary">Data is collected from people in over 150 countries. Each variable measured reveals a populated-weighted average score on a scale running from 0 to 10 that is tracked over time and compared against other countries. These variables currently include: real <i>GDP per Capita</i>, <i>Social Support</i>, <i>Healthy Life Expectancy</i>, <i>Freedom to make Life Choices</i>, <i>Generosity</i>, and <i>Perceptions of Corruption</i>. Each country is also compared against a hypothetical nation called <i>Dystopia</i>. Dystopia represents the lowest national averages for each key variable and is, along with residual error, used as a regression benchmark.</p>
+								</div>
+								<div>
+									<p class="text-secondary">Further, in this work I have used data from the above mentioned sources to present a Narrative Visualization to unfold insights on World's Happiness considering different dimensions as described below:</p>
+									<ul>
+										<li class="text-secondary"><b class="text-secondary-head">State of Global Happiness</b>: How does World Happiness trends across different geographies in the world? Which regions in the world are happier and which are not so happy.</li><br/>
+										<li class="text-secondary"><b class="text-secondary-head">Key Factors & its impact on Happiness</b>: What are the impacts of Key Factors (mentioned above) on Happiness Score and which of these have higher importance? How does these features trends across different geographies in the world?</li><br/>
+										<li class="text-secondary"><b class="text-secondary-head">Happiness Change around the World</b>: How has Happiness changed around the world in last 4 years from 2015 to 2019?</li>
+									</ul>
+								</div>
+								<br/><br/>
+								<div><i style="font-size:0.8vw">Use '>' button on side to move forward and '<' button to move backwards.</i></div>
+							</div>
+						</div>
+						<div class="col-1"></div>
+					</div>
+				</div>
+			</div>
+			<div class="slides fade">
 					<div class="row justify-content-center align-items-center ">
 						<div class="col-1"></div>
 						<div class="col-10 justify-content-center align-items-center">
 						  <div class="text-center">
-							<h2 class="text-head">Overview: State of Global Happiness</h2>
-							<p class="text-secondary">The World Happiness Report is a landmark survey of the state of global happiness that ranks 156 countries by how happy their citizens perceive themselves to be. The World Happiness Report 2020 for the first time ranks cities around the world by their subjective well-being and digs more deeply into how the social.</p>
+							<h2 class="text-head">State of Global Happiness</h2>
+							<p class="text-sub-head">Happiness around different world Geographies. Which regions are most happy and which are not so happy?</p>
 						  </div>
 						</div>
 						<div class="col-1"></div>
@@ -35,28 +63,32 @@
 						<div class="col-6 justify-content-center align-items-center">
 							<div class="row">
 								<div class="col">
+									<p class="row  justify-content-center align-items-bottom text-primary">Happiness around the World</p><br/>
 									<div id="happiness_score_map" class=" overflow-auto"></div>
-									<p class="row  justify-content-center align-items-bottom text-primary">Happiness around the World</p>
+									<div><i style="font-size:0.7vw">Hover over countries for more details.</i></div>
 								</div>
 							</div>
 						</div>
 						<div class="col-5 justify-content-center align-items-center">
 							<div class="row">
 								<div class="col">
-									<div id="happiness_rank_chart_top" class="row text-muted justify-content-center align-items-center overflow-auto"></div>
 									<p class="row  justify-content-center align-items-center text-primary">Countries with higher Happiness Score</p>
+									<div id="happiness_rank_chart_top" class="row text-muted justify-content-center align-items-center overflow-auto"></div>
+									<div><i style="font-size:0.7vw">Hover over bars for more details.</i></div>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col">
-									<div id="happiness_rank_chart_bottom" class="row text-muted justify-content-center align-items-center overflow-auto"></div>
 									<p class="row  justify-content-center align-items-center text-primary">Countries with lower Happiness Score</p>
+									<div id="happiness_rank_chart_bottom" class="row text-muted justify-content-center align-items-center overflow-auto"></div>
+									<div><i style="font-size:0.7vw">Hover over bars for more details.</i></div>
 								</div>
 							</div>
 						</div>
 						<div class="col-05"></div>
 					</div>
 					<div class="row justify-content-center">
+						<p>Select Region: </p>
 						<select id="overviewRegionDropDown" onchange="onOverviewRegionSelect()">
 							<option value="World">World</option>
 							<option value="Australia and New Zealand">Australia and New Zealand</option>
@@ -71,7 +103,6 @@
 							<option value="Western Europe">Western Europe</option>
 						</select>
 					</div>
-				</div>
 			</div>
 
 			<div class="slides fade">
@@ -80,8 +111,8 @@
 						<div class="col-1"></div>
 						<div class="col-10 justify-content-center align-items-center">
 						  <div class="text-center">
-							<h2 class="text-head">Factors Affecting Happiness</h2>
-							<p class="text-secondary">Factors included are real GDP per capita, social support, healthy life expectancy, freedom to make life choices, generosity, and perceptions of corruption. Each country is also compared against a hypothetical nation called Dystopia. Dystopia represents the lowest national averages for each key variable and is, along with residual error, used as a regression benchmark.</p>
+							<h2 class="text-head">Key Factors & its impact on Happiness</h2>
+							<p class="text-sub-head">Factors included are real GDP per capita, social support, healthy life expectancy, freedom to make life choices, generosity, and perceptions of corruption. Each country is also compared against a hypothetical nation called Dystopia. Dystopia represents the lowest national averages for each key variable and is, along with residual error, used as a regression benchmark.</p>
 						  </div>
 						</div>
 						<div class="col-1"></div>
@@ -91,26 +122,34 @@
 					<div class="row justify-content-center align-items-center ">
 						<div class="col-025"></div>
 						<div class="col-1105 justify-content-center align-items-center">
+							<p class="row  justify-content-center align-items-bottom text-primary">Key Factors distribution across different Countries</p>
 							<div id="happiness_factors_stacked" class=" overflow-auto"></div>
+							<div><i style="font-size:0.7vw">Hover over bars for more details.</i></div>
 						</div>
 						<div class="col-025"></div>
 					</div>
 				</div>				
 				<div class="row">
 					<div class="row justify-content-center align-items-center ">
+						<p class="row  justify-content-center align-items-bottom text-primary">Key Factor to Happiness Score Correlation Analysis</p>
+					</div>
+					<div class="row justify-content-center align-items-center ">
 						<div class="col-1"></div>
 						<div class="col-05"></div>
 						<div class="col-3 justify-content-center align-items-center">
 							<p class="row  justify-content-center align-items-bottom text-primary">GDP per Capita</p>
 							<div id="happiness_gdp_scatter"	 class=" overflow-auto"></div>
+							<div><i style="font-size:0.7vw">Hover over circles (Population Size) for more details.</i></div>
 						</div>
 						<div class="col-3 justify-content-center align-items-center">
 							<p class="row  justify-content-center align-items-bottom text-primary">Social Support</p>
 							<div id="happiness_social_scatter"		 class=" overflow-auto"></div>
+							<div><i style="font-size:0.7vw">Hover over circles (Population Size) for more details.</i></div>
 						</div>
 						<div class="col-3 justify-content-center align-items-center">
 							<p class="row  justify-content-center align-items-bottom text-primary">Healthy Life Expectancy</p>
 							<div id="happiness_health_scatter" 		 class=" overflow-auto"></div>
+							<div><i style="font-size:0.7vw">Hover over circles (Population Size) for more details.</i></div>
 						</div>
 						<div class="col-05"></div>
 						<div class="col-1"></div>
@@ -123,20 +162,24 @@
 						<div class="col-3 justify-content-center align-items-center">
 							<p class="row  justify-content-center align-items-bottom text-primary">Freedom to Life Choices</p>
 							<div id="happiness_freedom_scatter" 	 class=" overflow-auto"></div>
+							<div><i style="font-size:0.7vw">Hover over circles (Population Size) for more details.</i></div>
 						</div>
 						<div class="col-3 justify-content-center align-items-center">
 							<p class="row  justify-content-center align-items-bottom text-primary">Generosity</p>
 							<div id="happiness_generosity_scatter" 	 class=" overflow-auto"></div>
+							<div><i style="font-size:0.7vw">Hover over circles (Population Size) for more details.</i></div>
 						</div>
 						<div class="col-3 justify-content-center align-items-center">
 							<p class="row  justify-content-center align-items-bottom text-primary">Perception of Corruption</p>
 							<div id="happiness_corruption_scatter"	 class=" overflow-auto"></div>
+							<div><i style="font-size:0.7vw">Hover over circles (Population Size) for more details.</i></div>
 						</div>
 						<div class="col-05"></div>
 						<div class="col-1"></div>
 					</div>
 				</div>				
 				<div class="row justify-content-center">
+					<p>Select Region: </p>
 					<select id="factorRegionDropDown" onchange="onFactorRegionSelect()">
 						<option value="World">World</option>
 						<option value="Australia and New Zealand">Australia and New Zealand</option>
@@ -159,8 +202,8 @@
 						<div class="col-1"></div>
 						<div class="col-10 justify-content-center align-items-center">
 						  <div class="text-center">
-							<h2 class="text-head">Changes in World Happiness</h2>
-							<p class="text-secondary">Factors included are real GDP per capita, social support, healthy life expectancy, freedom to make life choices, generosity, and perceptions of corruption. Each country is also compared against a hypothetical nation called Dystopia. Dystopia represents the lowest national averages for each key variable and is, along with residual error, used as a regression benchmark.</p>
+							<h2 class="text-head">Happiness Change around the World</h2>
+							<p class="text-sub-head">How happiness score has changed around different regions of the world from year 2015 to 2019?</p>
 						  </div>
 						</div>
 						<div class="col-1"></div>
@@ -170,19 +213,24 @@
 					<div class="row justify-content-center align-items-center ">
 						<div class="col-2"></div>
 						<div class="col-8 justify-content-center align-items-center">
+							<p class="row  justify-content-center align-items-bottom text-primary">Percentage Changes in Happiness from 2015 to 2019</p>
 							<div id="happiness_change_scatter" class=" overflow-auto"></div>
+							<div><i style="font-size:0.7vw">Hover over circles (% Happiness Change) for more details.</i></div>
 						</div>
 						<div class="col-2"></div>
 					</div>
 					<div class="row justify-content-center align-items-center ">
 						<div class="col-2"></div>
 						<div class="col-8 justify-content-center align-items-center">
+							<p class="row  justify-content-center align-items-bottom text-primary">Rank Order Countries by change in Happiness Score</p>
 							<div id="happiness_change_bar" class=" overflow-auto"></div>
+							<div><i style="font-size:0.7vw">Hover over bars for more details.</i></div>
 						</div>
 						<div class="col-2"></div>
 					</div>
 				</div>					
 				<div class="row justify-content-center">
+					<p>Select Region: </p>
 					<select id="changeRegionDropDown" onchange="onChangeRegionSelect()">
 						<option value="World">World</option>
 						<option value="Australia and New Zealand">Australia and New Zealand</option>
@@ -241,9 +289,9 @@
 			  slides[slideIndex-1].style.display = "block";
 			  if(global_df_happiness){
 				  switch (slideIndex) {
-					case 1: drawOverview(global_topo, global_df_happiness, 'World'); break;
-					case 2: drawFactors(global_topo, global_df_happiness, 'World'); break;
-					case 3: drawChange(global_topo, global_df_happiness, 'World');  break;
+					case 2: drawOverview(global_topo, global_df_happiness, 'World'); break;
+					case 3: drawFactors(global_topo, global_df_happiness, 'World'); break;
+					case 4: drawChange(global_topo, global_df_happiness, 'World');  break;
 					default: draw(global_topo, global_df_happiness, 'World');
 				  }
 			  }

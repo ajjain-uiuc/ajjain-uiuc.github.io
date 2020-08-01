@@ -60,3 +60,5 @@ function mouseover_health(d){mouseover(d, ['score', 'health']);}
 function mouseover_social(d){mouseover(d, ['score', 'social']);}
 function mouseover_generosity(d){mouseover(d, ['score', 'generosity']);}
 function mouseover_freedom(d){mouseover(d, ['score', 'freedom']);}
+function mouseover_factors(d){mouseover(d.data, ['score','gdp','health', 'social','freedom','generosity']);}
+function mouse_over_change(d){mouseover(d, ['percent_change','score','score_old']);}

@@ -51,7 +51,9 @@ function drawPlusMinusBarChart(df, id, x, y, region){
       .attr("y", function(d, i) { return height - Math.max(0, yScale(0)); })
       .attr("width",  xScale.bandwidth())
       .attr("height", function(d) {return Math.abs(yScale(0)); })
-      .attr("fill", function(d){ return d[y] > 0 ? "#2E8B57" : "#B22222"; });
+      .attr("fill", function(d){ return d[y] > 0 ? "#2E8B57" : "#B22222"; })
+	  .on("mouseover", mouse_over_change )
+	  .on("mouseout", mouseout );;
 
   var yAxis = d3.axisLeft(yAxisScale);
 
@@ -77,6 +79,6 @@ function drawPlusMinusBarChart(df, id, x, y, region){
     .duration(800)
     .attr("y", function(d, i) { return height - Math.max(0, yScale(d[y])); })
     .attr("height", function(d) {return Math.abs(yScale(d[y])); })
-    .delay(function(d,i){return(100)});
+    .delay(function(d,i){return(i*100)});
 
 }

@@ -55,14 +55,8 @@ function drawStackedBarChart(df, id, region, top, desc){
 		  .attr("y", function(d) { return yScale(d[1]); })
 		  .attr("height", function(d) { return yScale(d[0]) - yScale(d[1]); })
 		  .attr("width", xScale.bandwidth())
-		.on("mouseover", function() { tooltip.style("display", null); })
-		.on("mouseout", function() { tooltip.style("display", "none"); })
-		.on("mousemove", function(d) {
-		  var xPosition = d3.mouse(this)[0] - 5;
-		  var yPosition = d3.mouse(this)[1] - 5;
-		  tooltip.attr("transform", "translate(" + xPosition + "," + yPosition + ")");
-		  tooltip.select("text").text(d[1]-d[0]);
-		});
+		.on("mouseover", mouseover_factors)
+		.on("mouseout", mouseout);
 
   g.append("g")
       .attr("class", "axis")
