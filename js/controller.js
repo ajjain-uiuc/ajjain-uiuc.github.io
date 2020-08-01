@@ -2,6 +2,8 @@ function draw(topo, df, region){
   drawMap('#happiness_score_map', region, topo, df);
   drawBarChart(df, "#happiness_rank_chart_top", "country", "score", "score", true, 50, xlabel=false, region);
   drawBarChart(df, "#happiness_rank_chart_bottom", "country", "score", "score", false, 50, xlabel=false, region);
+  drawMap('#happy_region', 'Western Europe', topo, df);
+  drawMap('#not_happy_region', 'Sub-Saharan Africa', topo, df);
 
   /*
   drawStackedBarChart(df, "#happiness_factors_stacked", region, 156, true);
@@ -27,6 +29,8 @@ function drawOverview(topo, df, region){
   drawMap('#happiness_score_map', region, topo, df);
   drawBarChart(df, "#happiness_rank_chart_top", "country", "score", "score", true, 5, xlabel=false, region);
   drawBarChart(df, "#happiness_rank_chart_bottom", "country", "score", "score", false, 5, xlabel=false, region);
+  drawMap('#happy_region', 'Western Europe', topo, df);
+  drawMap('#not_happy_region', 'Sub-Saharan Africa', topo, df);
 }
 
 function drawFactors(topo, df, region){
