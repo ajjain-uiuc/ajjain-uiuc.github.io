@@ -87,6 +87,7 @@ function drawScatterPlotWithTrend(df, id, region, x, y, r, c){
 	  .attr("y", function(d,i){return yScale(d[y] || 0);})
 	  .attr("dx", function(d){return -40})
 	  .text(function(d){return Math.abs(d[r]) > 20 ? d.country+' '+(Math.floor(d[r] * 1000) / 1000)+'%' : '';})
+	  .attr("class", "textannotation")
 	  .delay(function(d,i){return(100*i)});
 	  
 
